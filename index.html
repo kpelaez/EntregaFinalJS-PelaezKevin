@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PreEntrega3</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <header class="p-4">
+        <h1 class="titulo">BIENVENIDO!!</h1>
+        <h2 class="subtitulo">Vamos a generar un presupuesto de bebidas para su fiesta.</h2>
+
+        <div id="datos_cliente">
+            <h3>Por favor introduzca su numero de cliente: </h3>
+            <input id="nro_cliente" type="text">
+        </div>
+    </header>
+    <div class="row">
+
+        <div class="col-12">
+
+            <div class="card" id="carrito">
+                <div class="card-body">
+                    <div class="row col-sm-12">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top"  src="img/CervezaRubia710.jpg" alt="">
+                                    <h4>Cerveza Rubia</h4>
+                                    <p id="art_1_precio"></p>
+                                </div>
+                                <div class="card-footer">
+                                    <input id="art_1" class="col-sm-3" type="text" value="0" disabled readonly>
+                                    <button class="btn btn-secondary" type="button" onclick="sumar_unidad(1);">+</button>
+                                    <button class="btn btn-secondary" type="button" onclick="restar_unidad(1);">-</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top"  src="img/CervezaNegra970.jpg" alt="">
+                                    <h4>Cerveza Negra</h4>
+                                    <p id="art_2_precio"></p>
+                                </div>
+                                <div class="card-footer">
+                                    <input id="art_2" class="col-sm-3" type="text" value="0" disabled readonly>
+                                    <button class="btn btn-secondary" type="button" onclick="sumar_unidad(2);">+</button>
+                                    <button class="btn btn-secondary" type="button" onclick="restar_unidad(2);">-</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top"  src="img/CervezaRoja730.jpg" alt="">
+                                    <h4>Cerveza Roja</h4>
+                                    <p id="art_3_precio"></p>
+                                </div>
+                                <div class="card-footer">
+                                    <input id="art_3" class="col-sm-3" type="text" value="0" disabled readonly>
+                                    <button class="btn btn-secondary" type="button" onclick="sumar_unidad(3);">+</button>
+                                    <button class="btn btn-secondary" type="button" onclick="restar_unidad(3);">-</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top"  src="img/VinoBlanco750.jpg" alt="">
+                                    <h4>Vino Blanco</h4>
+                                    <p id="art_4_precio"></p>
+                                </div>
+                                <div class="card-footer">
+                                    <input id="art_4" class="col-sm-3" type="text" value="0" disabled readonly>
+                                    <button class="btn btn-secondary" type="button" onclick="sumar_unidad(4);">+</button>
+                                    <button class="btn btn-secondary" type="button" onclick="restar_unidad(4);">-</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top"  src="img/VinoTinto750.jpg" alt="">
+                                    <h4>Vino Tinto</h4>
+                                    <p id="art_5_precio"></p>
+                                </div>
+                                <div class="card-footer">
+                                    <input id="art_5" class="col-sm-3" type="text" value="0" disabled readonly>
+                                    <button class="btn btn-secondary" type="button" onclick="sumar_unidad(5);">+</button>
+                                    <button class="btn btn-secondary" type="button" onclick="restar_unidad(5);">-</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top"  src="img/Fernet750.jpg" alt="">
+                                    <h4>Fernet</h4>
+                                    <p id="art_6_precio"></p>
+                                </div>
+                                <div class="card-footer">
+                                    <input id="art_6" class="col-sm-3" type="text" value="0" disabled readonly>
+                                    <button class="btn btn-secondary" type="button" onclick="sumar_unidad(6);">+</button>
+                                    <button class="btn btn-secondary" type="button" onclick="restar_unidad(6);">-</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top"  src="img/Ron750.jpg" alt="">
+                                    <h4>Ron</h4>
+                                    <p id="art_7_precio"></p>
+                                </div>
+                                <div class="card-footer">
+                                    <input id="art_7" class="col-sm-3" type="text" value="0" disabled readonly>
+                                    <button class="btn btn-secondary" type="button" onclick="sumar_unidad(7);">+</button>
+                                    <button class="btn btn-secondary" type="button" onclick="restar_unidad(7);">-</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top"  src="img/Vodka700.jpeg" alt="">
+                                    <h4>Vodka</h4>
+                                    <p id="art_8_precio"></p>
+                                </div>
+                                <div class="card-footer">
+                                    <input id="art_8" class="col-sm-3" type="text" value="0" disabled readonly>
+                                    <button class="btn btn-secondary" type="button" onclick="sumar_unidad(8);">+</button>
+                                    <button class="btn btn-secondary" type="button" onclick="restar_unidad(8);">-</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-sm-12">
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top"  src="img/Gaseosa15.png" alt="">
+                                    <h4>Gaseosas</h4>
+                                    <p id="art_9_precio"></p>
+                                </div>
+                                <div class="card-footer">
+                                    <input id="art_9" class="col-sm-3" type="text" value="0" disabled readonly>
+                                    <button class="btn btn-secondary" type="button" onclick="sumar_unidad(9);">+</button>
+                                    <button class="btn btn-secondary" type="button" onclick="restar_unidad(9);">-</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="card-img-top"  src="img/Agua2.jpg" alt="">
+                                    <h4>Agua</h4>
+                                    <p id="art_10_precio"></p>
+                                </div>
+                                <div class="card-footer">
+                                    <input id="art_10" class="col-sm-3" type="text" value="0" disabled readonly>
+                                    <button class="btn btn-secondary" type="button" onclick="sumar_unidad(10);">+</button>
+                                    <button class="btn btn-secondary" type="button" onclick="restar_unidad(10);">-</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary" type="button" onclick="armar_presupuesto();">Finalizar Presupuesto</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
