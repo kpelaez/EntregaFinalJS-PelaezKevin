@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    
+
     document.getElementById('art_1_precio').innerHTML = '$'+bebidas[0].precio;
     document.getElementById('art_2_precio').innerHTML = '$'+bebidas[1].precio;
     document.getElementById('art_3_precio').innerHTML = '$'+bebidas[2].precio;
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('art_8_precio').innerHTML = '$'+bebidas[7].precio;
     document.getElementById('art_9_precio').innerHTML = '$'+bebidas[8].precio;
     document.getElementById('art_10_precio').innerHTML = '$'+bebidas[9].precio;
-    
+
 });
 
 //Conseguir Nro de cliente del input y modificar header
@@ -18,14 +18,14 @@ let nro_cliente = document.getElementById("nro_cliente");
 
 nro_cliente.onchange= () => {
 
-    localStorage.setItem('nro_cliente', nro_cliente.value);
+    sessionStorage.setItem('nro_cliente', nro_cliente.value);
     let contenedor = document.getElementById("datos_cliente");
-    
-    contenedor.innerHTML = `<h3>Su numero de cliente es: <strong>${localStorage.getItem('nro_cliente')}</strong> </h3>`;
+
+    contenedor.innerHTML = `<h3>Su numero de cliente es: <strong>${sessionStorage.getItem('nro_cliente')}</strong> </h3>`;
 }
 
 
-//Objeto bebida 
+//Objeto bebida
 function Bebida(nombre, precio){
     this.nombre = nombre;
     this.precio = precio;
@@ -40,14 +40,14 @@ function PresupuestoItem(bebida, cantidad){
 }
 
 function calcularTotal(){
-    
-    let elemento = localStorage.getItem('presupuesto');
+
+    let elemento = sessionStorage.getItem('presupuesto');
     elemento = JSON.parse(elemento);
 
     let total = 0;
 
     for(const item of elemento){
-        total = total + item.importe 
+        total = total + item.importe
     }
 
     return total;
@@ -55,33 +55,32 @@ function calcularTotal(){
 
 function mostrarPresupuestoFinal (total){
 
-    let elemento = localStorage.getItem('presupuesto');
+    let elemento = sessionStorage.getItem('presupuesto');
     elemento = JSON.parse(elemento);
-    
-    let nro_cliente = localStorage.getItem('nro_cliente');
+
+    let nro_cliente = sessionStorage.getItem('nro_cliente');
     //STRINGS CON PLANTILLAS
     let inicioPresu = `Presupuesto del Cliente n°: ${nro_cliente}\n`;
-    
+
     let cuerpo = "";
     for (const item of elemento){
-        
-        if (item.cantidad > 0) {            
+
+        if (item.cantidad > 0) {
                 cuerpo +=`${item.producto}, cantidad: ${item.cantidad}, importe: $ ${item.importe}<br>`;
         }
 
-    }   
+    }
 
     let contenedor_presupuesto = document.createElement("div");
     let stringTotal = `El total del presupuesto es: $${total}`;
 
     contenedor_presupuesto.id = "presupuesto_carrito";
 
-    
+
     //Estructura del div final
     contenedor_presupuesto.innerHTML = `<h3> ${inicioPresu}</h3>
                                         <p>${cuerpo}</p>
                                         <p><strong>${stringTotal}</strong></p>
-                                        <p>El importe presupuestado es el equivalente en pesos a la suma de Usd${importeDolar} (este importe en dolares inclue impuestos) tomando el tipo de cambio vendedor del Banco de la Nacion Argentina. Se mantendra el valor del presupuesto por 7 dias.</p>                                        
                                         <button class="btn btn-danger" type="button" onclick="volver_carrito();">Volver</button>`;
 
     document.body.appendChild(contenedor_presupuesto);
@@ -93,8 +92,8 @@ const bebidas = [
     {nombre: "Cerveza Negra", precio: 900.0},
     {nombre: "Cerveza Roja", precio: 750.0},
     {nombre: "Vino Blanco",precio:1700.0},
-    {nombre: "Vino Tinto", precio:1400.0}, 
-    {nombre: "Fernet", precio: 2400.0}, 
+    {nombre: "Vino Tinto", precio:1400.0},
+    {nombre: "Fernet", precio: 2400.0},
     {nombre: "Ron", precio: 3200.0},
     {nombre: "Vodka", precio: 2500.0},
     {nombre: "Gaseosas",precio:800.0},
@@ -115,9 +114,7 @@ const restar_unidad = (art_id) => {
     let input = document.getElementById('art_'+art_id);
     let unidad = parseInt(input.value);
 
-    if (unidad != 0) {        
-        input.value = unidad-1;
-    }
+    (unidad!=0) ? (input.value = unidad-1) : undefined;
 
 }
 
@@ -128,12 +125,12 @@ const armar_presupuesto = () => {
     for (let i = 1; i < 11; i++) {
 
         let cant = parseInt(document.getElementById('art_'+i).value);
-        presupuesto.push(new PresupuestoItem(bebidas[i-1],cant));       
-        
+        presupuesto.push(new PresupuestoItem(bebidas[i-1],cant));
+
     }
 
     presupuesto = JSON.stringify(presupuesto);
-    localStorage.setItem('presupuesto',presupuesto);
+    sessionStorage.setItem('presupuesto',presupuesto);
 
     importeTotal = calcularTotal();
     mostrarPresupuestoFinal(importeTotal);
